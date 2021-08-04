@@ -1,9 +1,9 @@
+import Menu from './Menu'
 import logo from '../../assets/images/icons/logo.svg';
-import React from 'react';
 
 export default function Header() {
     return (
-        <header className='header'>
+        <header className='header row row_between'>
             <div className='logo row container'>
                 <img
                     className='logo__img'
@@ -14,6 +14,7 @@ export default function Header() {
                     Bookshelf
                 </div>
             </div>
+            <Menu/>
         </header>
     );
 }
