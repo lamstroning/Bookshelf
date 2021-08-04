@@ -1,10 +1,38 @@
 .button {
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--text-primary);
   padding: 10px 20px;
   background-color: white;
   transition: var(--default-transition);
+  cursor: pointer;
+
+  &__icon {
+    color: var(--text-primary);
+
+    &_right {
+      padding-left: 15px;
+    }
+  }
 
   &:hover {
     background-color: #e5e5e5;
   }
+}
+
+.link {
+  transition: var(--default-transition);
+
+  &:hover {
+    color: white;
+  }
+
+  &_white {
+    color: white;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
 }

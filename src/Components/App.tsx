@@ -1,11 +1,13 @@
 import React from 'react';
 import '../styles/components/_app.scss';
-import Header from './common/Header';
+import Filter from './Common/Filter';
+import Header from './Common/Header';
 
 function App() {
   return (
     <div className='App'>
         <Header/>
+        <Filter/>
     </div>
   );
 }

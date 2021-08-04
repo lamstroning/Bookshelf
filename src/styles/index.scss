@@ -1,9 +1,11 @@
 @import 'common/constants.css';
 @import 'common/common.scss';
-@import 'common/grid';
 @import 'common/inputs';
+@import 'common/grid';
 @import 'common/fonts';
 
 @import 'components/app.scss';
 @import 'components/header.scss';
 @import 'components/menu.scss';
+@import 'components/book-card.scss';
+@import 'components/filter.scss';
