@@ -4,15 +4,15 @@ import React from 'react';
 export default function Header() {
     return (
         <header className='header'>
-            <div className='header__logo'>
-                <div className='logo'>
-                    <img
-                        className="logo"
-                        src={logo}
-                        alt="logo"
-                    />
+            <div className='logo row container'>
+                <img
+                    className='logo__img'
+                    src={logo}
+                    alt='logo'
+                />
+                <div className='logo__name'>
+                    Bookshelf
                 </div>
-                Bookshelf
             </div>
         </header>
     );
