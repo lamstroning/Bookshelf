@@ -3,13 +3,16 @@ import React from 'react';
 
 export default function Header() {
     return (
-        <header>
-            <div className='logo'>
-                <img
-                    className="logo"
-                    src={logo}
-                    alt="logo"
-                />
+        <header className='header'>
+            <div className='header__logo'>
+                <div className='logo'>
+                    <img
+                        className="logo"
+                        src={logo}
+                        alt="logo"
+                    />
+                </div>
+                Bookshelf
             </div>
         </header>
     );
