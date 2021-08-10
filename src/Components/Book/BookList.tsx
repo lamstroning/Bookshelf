@@ -7,7 +7,7 @@ export default function BookList() {
             <div className='container'>
                 <div className='row row_wrap'>
                     {books.map(book =>
-                        <div className='col col_3'>
+                        <div key={book.name} className='col col_3'>
                             <BookCard book={book}/>
                         </div>
                     )}

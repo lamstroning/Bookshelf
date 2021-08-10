@@ -1,5 +1,5 @@
 import Menu from './Menu'
-import logo from '../../assets/images/icons/logo.svg';
+import logo from '../../assets/icons/logo.svg';
 
 export default function Header() {
     return (

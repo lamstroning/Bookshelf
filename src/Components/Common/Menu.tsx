@@ -2,12 +2,12 @@ export default function Menu() {
     return (
         <div className='row'>
             <div className='col'>
-                <a href='#' className='link link_white'>
+                <a href='/' className='link link_white'>
                     На главную
                 </a>
             </div>
             <div className='col'>
-                <a href='#' className='button'>
+                <a href='/add' className='button'>
                 <span className='button__label'>
                     Добавить книгу
                 </span>
