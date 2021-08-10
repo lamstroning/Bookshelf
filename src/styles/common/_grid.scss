@@ -2,7 +2,7 @@ $columns-count: 12;
 $offset: 8px;
 
 .container {
-  padding: 0 16px;
+  padding: 16px;
 
   &_offset {
     padding: 16px;
@@ -12,7 +12,7 @@ $offset: 8px;
 .row {
   display: flex;
   align-items: center;
-  margin: 0 -16px;
+  margin: -16px;
 
   &_wide {
     width: 100%;
@@ -50,7 +50,7 @@ $offset: 8px;
 }
 
 .col {
-  padding: 0 16px;
+  padding: 16px;
 
   &_top {
     margin-top: 16px;
