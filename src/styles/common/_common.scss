@@ -22,8 +22,19 @@ button {
   flex-direction: column;
 
   &__body {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
     overflow: auto;
+    flex: 1;
+  }
+
+  &__wrapper {
+    max-width: 1440px;
+    width: 100%;
+    padding: 0 40px;
+    margin: 0 auto;
+    overflow: auto;
+    flex: 1;
   }
 }
 

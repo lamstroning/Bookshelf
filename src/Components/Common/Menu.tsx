@@ -8,9 +8,9 @@ export default function Menu() {
             </div>
             <div className='col'>
                 <a href='/add' className='button'>
-                <span className='button__label'>
-                    Добавить книгу
-                </span>
+                    <span className='button__label'>
+                        Добавить книгу
+                    </span>
                     <i className='button__icon button__icon_right icon icon_plus'/>
                 </a>
             </div>
