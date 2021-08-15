@@ -7,6 +7,10 @@
   transition: var(--default-transition);
   cursor: pointer;
 
+  &:hover {
+    background-color: #e5e5e5;
+  }
+
   &__icon {
     color: var(--text-primary);
 
@@ -15,9 +19,15 @@
     }
   }
 
-  &:hover {
-    background-color: #e5e5e5;
+  &_primary {
+    background-color: var(--primary-color);
+    color: white;
+
+    &:hover {
+      background-color: var(--primary-hover-color);
+    }
   }
+
 }
 
 .link {

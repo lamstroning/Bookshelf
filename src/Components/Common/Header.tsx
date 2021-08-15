@@ -6,7 +6,10 @@ export default function Header() {
         <div className='container'>
             <header className='header row row_between'>
                 <div className='container'>
-                    <div className='logo row'>
+                    <a
+                        href='/'
+                        className='logo row'
+                    >
                         <img
                             className='logo__img'
                             src={logo}
@@ -15,7 +18,7 @@ export default function Header() {
                         <div className='logo__name'>
                             Bookshelf
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <Menu/>
             </header>

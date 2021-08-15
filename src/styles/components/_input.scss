@@ -11,7 +11,24 @@
     padding: 8px;
     border: 1px solid var(--border-color);
     border-radius: 0;
-    outline: 1px solid var(--primary-color);
+
+    &:focus {
+      outline: 1px solid var(--primary-color);
+    }
+  }
+
+  &_error {
+    .input__control {
+      border-color: red;
+
+      &:focus {
+        outline: 1px solid var(--primary-color);
+      }
+    }
+
+    .input__label {
+      color: red;
+    }
   }
 }
 

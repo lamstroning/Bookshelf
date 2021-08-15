@@ -1,12 +1,23 @@
-export default function Input({label, ...other}: {label: string, [other: string]: any}) {
+import clsx from 'clsx';
+
+export default function Input({label, error, ...other}: {label: string, error?: boolean, [other: string]: any}) {
     return (
-        <label className='input'>
+        <label
+            className={
+                clsx('input', {
+                    input_error: error
+                })
+            }
+        >
             <span className='input__label'>
                 {label}
+                {error &&
+                    <span> - Заполните поле</span>
+                }
             </span>
             <input
-                {...other}
                 className='input__control'
+                {...other}
             />
         </label>
     )

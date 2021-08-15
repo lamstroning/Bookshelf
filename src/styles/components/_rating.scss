@@ -1,0 +1,21 @@
+.rating {
+  &__label {
+    margin-top: 8px;
+    padding: 0 6px;
+    font-size: 12px;
+  }
+  
+  &__control {
+    display: flex;
+    margin-top: 8px;
+  }
+  
+  &__star {
+    cursor: pointer;
+    color: lightblue;
+
+    &_active {
+      color: var(--orange-color);
+    }
+  }
+}

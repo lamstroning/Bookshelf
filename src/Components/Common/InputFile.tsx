@@ -1,4 +1,4 @@
-export default function InputFile() {
+export default function InputFile({value: any}: {value: any}) {
     return (
         <label className='input-file'>
             <span className='input-file__label'>
