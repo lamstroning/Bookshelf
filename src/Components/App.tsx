@@ -7,6 +7,7 @@ import Header from './Common/Header';
 import BookList from './Book/BookList';
 import NotFound from './Common/NotFound';
 import AddBook from './Book/AddBook';
+import DetailBook from "./Book/DetailBook";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
                     </Route>
                     <Route path='/add'>
                         <AddBook/>
+                    </Route>
+                    <Route exact path='/detail/:id'>
+                        <DetailBook/>
                     </Route>
                     <Route path='*'>
                         <Redirect to='/404'/>

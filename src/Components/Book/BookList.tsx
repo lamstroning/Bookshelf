@@ -7,6 +7,11 @@ export default function BookList() {
         <div className='page__wrapper'>
             <div className='container'>
                 <div className='row row_wrap'>
+                    {!books.length &&
+                        <div className='text text_italic text_grey text_center col col_wide'>
+                            Список пуст
+                        </div>
+                    }
                     {books.map(book =>
                         <div key={book.id} className='col col_3'>
                             <BookCard book={book}/>

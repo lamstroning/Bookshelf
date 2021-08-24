@@ -17,88 +17,18 @@ export interface Book {
 
 export const defaultPhoto = emptyPhoto;
 
-export const books: Book[] = [
-    {
-        id: 0,
-        name: 'book',
-        description: '',
-        auth: '',
-        publisher: '',
-        isbn: '',
-        year: '',
-        photo: '',
-        reviews: '',
-        notes: '',
-        pageCount: '',
-        rating: 0
-    },
-    {
-        id: 0,
-        name: 'book',
-        description: '',
-        auth: '',
-        publisher: '',
-        isbn: '',
-        year: '',
-        photo: '',
-        reviews: '',
-        notes: '',
-        pageCount: '',
-        rating: 0
-    },
-    {
-        id: 0,
-        name: 'book',
-        description: '',
-        auth: '',
-        publisher: '',
-        isbn: '',
-        year: '',
-        photo: '',
-        reviews: '',
-        notes: '',
-        pageCount: '',
-        rating: 0
-    },
-    {
-        id: 0,
-        name: 'book',
-        description: '',
-        auth: '',
-        publisher: '',
-        isbn: '',
-        year: '',
-        photo: '',
-        reviews: '',
-        notes: '',
-        pageCount: '',
-        rating: 0
-    },
-    {
-        id: 0,
-        name: 'book',
-        description: '',
-        auth: '',
-        publisher: '',
-        isbn: '',
-        year: '',
-        photo: '',
-        reviews: '',
-        notes: '',
-        pageCount: '',
-        rating: 0
-    }
-];
-
 export function getBookList(): Book[] {
     return JSON.parse(window.localStorage.getItem('book-list') || '[]');
 }
 
-export function deleteBook(id: number) {
-    const bookList: Book[] = getBookList();
+export function getBookById(bookId: number): Book {
+    return getBookList().find(({id}) => id === bookId) as Book;
+}
 
-    bookList.filter((book) => book.id !== id);
-    window.localStorage.setItem('book-list', JSON.stringify(bookList));
+export function deleteBook(id: number | undefined) {
+    const bookList: Book[] = getBookList();
+    const newBookList = bookList.filter((book) => book.id !== id);
+    window.localStorage.setItem('book-list', JSON.stringify(newBookList));
 }
 
 export function saveBookList(book: Book) {

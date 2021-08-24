@@ -19,6 +19,10 @@
     }
   }
 
+  &_center {
+    justify-content: center;
+  }
+
   &_primary {
     background-color: var(--primary-color);
     color: white;
@@ -50,6 +54,9 @@
 .form {
   &__file {
     min-width: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
   }
 
   &__input {

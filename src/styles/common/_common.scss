@@ -42,3 +42,17 @@ a {
   text-decoration: none;
   color: var(--text-primary)
 }
+
+.text {
+  &_grey {
+    color: grey;
+  }
+
+  &_italic {
+    font-style: italic;
+  }
+
+  &_center {
+    text-align: center;
+  }
+}

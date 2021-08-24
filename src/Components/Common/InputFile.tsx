@@ -1,4 +1,10 @@
-export default function InputFile({value: any}: {value: any}) {
+type Props = {
+    value: any,
+    onChange: any,
+    [props: string]: any
+}
+
+export default function InputFile({value, onChange, ...props}: Props) {
     return (
         <label className='input-file'>
             <span className='input-file__label'>
@@ -8,7 +14,11 @@ export default function InputFile({value: any}: {value: any}) {
             <span className='input-file__label'>
                 Выберите файл
             </span>
-            <input type='file'/>
+            <input
+                {...props}
+                onChange={onChange}
+                type='file'
+            />
         </label>
     )
 }

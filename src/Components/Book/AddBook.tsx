@@ -35,12 +35,29 @@ export default function AddBook() {
             setValidate(false);
     }
 
+    function getBase64(fileList: FileList | null) {
+        if (!fileList)
+            return;
+        const file = fileList[0];
+        const blob = new Blob([file]);
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(blob);
+        fileReader.onload = () => setBook({...book, photo: fileReader.result as string});
+    }
+
     return (
         <form className='page__wrapper form'>
             <div className='container'>
                 <div className='row row_stretch'>
-                    <div className='col col_4 form__file'>
-                        <InputFile value={book.photo}/>
+                    <div
+                        className='col col_4 form__file'
+                        style={{backgroundImage: `url(${book.photo})`}}
+                    >
+                        <InputFile
+                            accept='.jpg, .jpeg, .png'
+                            onChange={(event: ChangeEvent<HTMLInputElement>) => getBase64(event.target.files)}
+                            value={book.photo}
+                        />
                     </div>
                     <div className='col col_wide'>
                         <div className='form__input'>
