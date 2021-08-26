@@ -37,3 +37,20 @@ export function saveBookList(book: Book) {
     bookList.push(book);
     window.localStorage.setItem('book-list', JSON.stringify(bookList));
 }
+
+export function getKeys(book: Book, filter: string[] = []) {
+    const result: {
+        key: string,
+        value: string | number;
+    }[] = [];
+
+    Object.entries(book).forEach(bookKeyValue => {
+        if (!filter.includes(bookKeyValue[0]))
+            result.push({
+                key: bookKeyValue[0],
+                value: bookKeyValue[1]
+            })
+        }
+    )
+    return result;
+}

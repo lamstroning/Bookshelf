@@ -55,4 +55,26 @@ a {
   &_center {
     text-align: center;
   }
+
+  &_size-small {
+    font-size: 12px;
+  }
+
+  &_overflow {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.display {
+  &_inline-block {
+    display: inline-block;
+  }
+}
+
+.margin {
+  &_x-1 {
+    margin: 8px;
+  }
 }

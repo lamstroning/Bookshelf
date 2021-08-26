@@ -51,6 +51,14 @@ $offset: 8px;
   &_wrap {
     flex-wrap: wrap;
   }
+
+  &_column {
+    flex-direction: column;
+  }
+
+  &_clearOffset {
+    margin: 0;
+  }
 }
 
 .col {

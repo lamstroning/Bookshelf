@@ -2,26 +2,31 @@ import {ChangeEvent, useState} from 'react';
 
 import Input from '../Common/Input';
 import InputFile from '../Common/InputFile';
-import {saveBookList} from '../../Services/books';
+import {getKeys, saveBookList} from '../../Services/books';
 import Rating from "../Common/Rating";
+import Translate from "../../utils/translate";
+
+const filterKeys: string[] = ['id', 'photo', 'rating']
+const mandatoryKeys: string[] = ['name', 'description', 'auth', 'publisher', 'isbn', 'year']
 
 export default function AddBook() {
     const [validate, setValidate] = useState(true);
     const [success, setSuccess] = useState(false);
-    const currentYear = new Date().getFullYear();
     const [book, setBook] = useState({
         name: '',
         description: '',
         auth: '',
         publisher: '',
         isbn: '',
+        year: '',
         photo: '',
         reviews: '',
         notes: '',
-        year: '',
         pageCount: '',
         rating: 0
     });
+
+    const booksValue = getKeys(book, filterKeys);
 
     function validateForm() {
         if (
@@ -60,113 +65,42 @@ export default function AddBook() {
                         />
                     </div>
                     <div className='col col_wide'>
-                        <div className='form__input'>
-                            <Input
-                                label='Название'
-                                value={book.name}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    setBook({...book, name: event.target.value});
-                                }}
-                                error={!validate && !book.name}
-                            />
-                        </div>
-                        <div className='form__input'>
-                            <Input
-                                label='Описание'
-                                value={book.description}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    setBook({...book, description: event.target.value});
-                                }}
-                                error={!validate && !book.description}
-                            />
-                        </div>
-                        <div className='form__input'>
-                            <Input
-                                label='Автор'
-                                value={book.auth}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    setBook({...book, auth: event.target.value});
-                                }}
-                                error={!validate && !book.auth}
-                            />
-                        </div>
-                        <div className='form__input'>
-                            <Input
-                                label='Издательство'
-                                value={book.publisher}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    setBook({...book, publisher: event.target.value});
-                                }}
-                                error={!validate && !book.publisher}
-                            />
-                        </div>
-                        <div className='form__input'>
-                            <Input
-                                label='Код ISBN'
-                                type='number'
-                                value={book.isbn}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    setBook({...book, isbn: event.target.value});
-                                }}
-                                error={!validate && !book.isbn}
-                            />
-                        </div>
-                        <div className='form__input'>
-                            <Input
-                                label='Год издания'
-                                type='number'
-                                value={book.year}
-                                max={currentYear}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    setBook({...book, year: event.target.value});
-                                }}
-                                error={!validate && !book.year}
-                            />
-                        </div>
-                        <div className='form__input'>
-                            <Input
-                                label='Количество страниц'
-                                type='number'
-                                value={book.pageCount}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    setBook({...book, pageCount: event.target.value});
-                                }}
-                            />
-                        </div>
-                        <div className='form__input'>
-                            <Input
-                                label='Отзывы тех, кто прочитал'
-                                value={book.reviews}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    setBook({...book, reviews: event.target.value});
-                                }}
-                            />
-                        </div>
-                        <div className='form__input'>
-                            <Input
-                                label='Личные заметки по книге'
-                                value={book.notes}
-                                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                                    setBook({...book, notes: event.target.value});
-                                }}
-                            />
-                        </div>
+                        {booksValue.map(bookValue =>
+                            <>
+                                <div className='form__input' key={bookValue.key}>
+                                    <Input
+                                        label={Translate(bookValue.key)}
+                                        value={bookValue.value}
+                                        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                                            setBook({...book, [bookValue.key]: event.target.value});
+                                            console.log(validate);
+                                        }}
+                                        error={mandatoryKeys.includes(bookValue.key) && !validate && !bookValue.value}
+                                    />
+                                </div>
+                            </>
+                        )}
+
                         <div className='form__input'>
                             <Rating
                                 currentRating={book.rating}
                                 onChange={(rating: number) => setBook({...book, rating})}/>
                         </div>
-                        <div className='form__input row container'>
-                            <button
-                                className='button button_primary'
-                                type='button'
-                                onClick={() => validateForm()}
-                            >
-                                Сохранить
-                            </button>
+                        <div className='form__input'>
+                            <div className='display display_inline-block'>
+                                <button
+                                    className='button button_primary'
+                                    type='button'
+                                    onClick={() => validateForm()}
+                                >
+                                    Сохранить
+                                </button>
+                            </div>
                             {success &&
-                                <div className='success'>
-                                    сохранено
+                                <div className='display display_inline-block'>
+                                    <div className='text text_size-small success margin margin_x-1'>
+                                        сохранено
+                                    </div>
                                 </div>
                             }
                         </div>

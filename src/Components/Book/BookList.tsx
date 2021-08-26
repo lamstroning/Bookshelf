@@ -13,7 +13,7 @@ export default function BookList() {
                         </div>
                     }
                     {books.map(book =>
-                        <div key={book.id} className='col col_3'>
+                        <div key={book.id} className='col col_4'>
                             <BookCard book={book}/>
                         </div>
                     )}

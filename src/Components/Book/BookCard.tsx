@@ -1,35 +1,41 @@
-import {Book, defaultPhoto} from '../../Services/books';
-import Rating from '../Common/Rating';
+import {Book, defaultPhoto, getKeys} from '../../Services/books';
+// import Rating from '../Common/Rating';
+import Translate from "../../utils/translate";
+import Rating from "../Common/Rating";
+
+const filterValue = ['id', 'photo', 'year', 'notes', 'pageCount', 'reviews', 'description', 'rating', 'publisher']
 
 export default function BookCard({book}: {book: Book}) {
+    const booksValue = getKeys(book, filterValue);
+
     return (
         <div className='book-card'>
-            <span
-                className='book-card__photo'
-                style={{backgroundImage: `url(${book.photo || defaultPhoto})`}}
-            >
-
-            </span>
-            <div className=''>
-                {book.name}
+            <div className='book-card__section'>
+                <div
+                    className='book-card__photo'
+                    style={{backgroundImage: `url(${book.photo || defaultPhoto})`}}
+                />
             </div>
-            <div className=''>{book.description}</div>
-            <div className=''>{book.auth}</div>
-            <div className=''>{book.publisher}</div>
-            <div className=''>{book.isbn}</div>
-            <div className=''>{book.reviews}</div>
-            <div className=''>{book.notes}</div>
-            <div className=''>{book.year}</div>
-            <div className=''>{book.pageCount}</div>
-            <span className='book-card__info'>
-                <Rating currentRating={book.rating}/>
-                <a
-                    href={`/detail/${book.id}`}
-                    className='button button_center button_primary'
-                >
-                    Подробнее
-                </a>
-            </span>
+            <div className='book-card__section row row_between row_clearOffset row_column'>
+                <div className='col col_12'>
+                    {booksValue.map(booksValue =>
+                        <>
+                            <div className='book-card__label'>
+                                {Translate(booksValue.key)}:
+                            </div>
+                            <div
+                                className='book-card__value text text_overflow'
+                                title={`${booksValue.value}`}
+                            >
+                                {booksValue.value}
+                            </div>
+                        </>
+                    )}
+                </div>
+                <div className='col'>
+                    <Rating currentRating={book.rating}/>
+                </div>
+            </div>
         </div>
     );
 }
